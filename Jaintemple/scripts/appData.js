@@ -29,12 +29,11 @@ var AppData = function() {
 	];
     
 	_announcements = [
-		{ title: "Annual Pooja", description: "Our Derasar Annual function.", url: "images/holiday.png" },
-		{ title: "Pathshala", description: "Register any Jitterz card and start earning rewards like free drinks. Sign-up now.", url: "images/rewards.png" },
-		{ title: "Lectures", description: "Raise a cup of bold and spicy Jitterz Anniversary Blend.", url: "images/cheers.png" },
-		{ title: "Hot Drinks Anytime", description: "Find and enjoy our, hot drinks anytime.", url: "images/hot-drink.png" },
-		{ title: "Friend and Love", description: "Get more for your friends.Get Love.", url: "images/love-friend.png" },
-		{ title: "Wide range of choice", description: "Raise a cup of bold and spicy Jitterz Anniversary Blend.", url: "images/best-coffee.png" }
+		{ title: "Pooja", description: "Our derasar pooja function.", url: "images/mahavir.jpg" },
+		{ title: "Pathshala", description: "Pathshala details. Sign-up now.", url: "images/jainsymbol1.jpg" },
+		{ title: "Lectures", description: "Click here for lectures", url: "images/jainsangh.png" },
+		{ title: "Donations", description: "Please donate generously.", url: "images/donate.png" },
+		
 	];
     
 	_private = {
