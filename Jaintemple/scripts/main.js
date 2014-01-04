@@ -207,6 +207,12 @@
 			});
 		},
         
+        pdfShow: function() {
+        
+                        
+                                window.open("http://www.jainsangh.org/LinkClick.aspx?fileticket=GCrcC7-ac1Q%3d&tabid=55&mid=409", "_blank");
+        
+        },
 		storesShow: function() {
 			//Don't attempt to reload map/sb data if offline
 			//console.log("ONLINE", _isOnline);
@@ -248,6 +254,8 @@
 		onAddCardViewShow: _app.onAddCardViewShow,
 		announcementData: _app.announcementData,
 		onStoresShow: _app.storesShow,
+        pdfShow: _app.pdfShow,
 		storesInit: _app.storesInit
 	});
 }(jQuery, document));
+
