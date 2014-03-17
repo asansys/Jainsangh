@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -56,26 +57,48 @@
 		</div>
 
 		<!-- Home page -->
-		<div data-role="view" id="home" data-title="Cherry Hill Jain Sangh" data-model="announcementViewModel">
+		<div data-role="view" id="home" data-title="Pledges and Donations" data-model="announcementViewModel">
 			<div data-role="content">
 				<div id="announcements">
-					<ul data-role="listview" id="announcements-listview" 
-						data-style="inset"  data-template="announcement-listview-template" data-bind="source: announcements">
-					</ul>
+					
 				</div>
-			</div>
+			    <ul data-role="listview" data-style="inset"> For Pledeges, Donations and Membership:
+
+<br>All members are encouraged to become Life Members. <br>Life Membership is $251.00
+
+<br>Please make check payable to <br>"The Jain Sangh" and <br>Mail to:
+
+Prashant Parekh<br>
+
+c/o The Jain Sangh, Inc<br>
+
+27 Fox Chase Road<br>
+
+Marlton, NJ 08053<br>
+
+Phone: 856.596.2886
+<br>
+
+    
+                                      
+                    <a href="mailto:prashant2862@yahoo.com">Email:Jain Sangh</a>
+
+                  </ul>
+   </div>
 		</div>
 
         
 		<!-- Home page template -->
 		<script type="text/x-kendo-template" id="announcement-listview-template">
-			<a href="#:pageurl#"><img  class="item-photo" src="#:url#" >
-			<div><h3   class="item-title">#:title#</h3>
-			<p  class="item-info">#:description#</p></div>
-        <div class="clear"></div></a>
+			<a href="#:pageurl#"><img  class="item-photo" src="#:url#">
+			<h3   class="item-title">#:title#</h3>
+			<p  class="item-info">#:description#</p></a>
 		</script>
 <script>
 			var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
 		</script>
 	</body>
 </html>
+
+
+   

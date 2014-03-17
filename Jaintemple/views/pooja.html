@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -49,7 +50,7 @@
 				<div data-role="tabstrip" data-id="jitterz-tabstrip">
 					<a href="#home" data-icon="home">Home</a>
 					<a href="views/openPDF.html" data-icon="card">Pathshala</a>
-					
+					<a href="views/rewardsView.html" data-icon="rewards">Pooja</a>
 					<a href="views/storesView.html" data-icon="stores">Directions</a>
 				</div>
 			</div>
@@ -59,23 +60,26 @@
 		<div data-role="view" id="home" data-title="Cherry Hill Jain Sangh" data-model="announcementViewModel">
 			<div data-role="content">
 				<div id="announcements">
-					<ul data-role="listview" id="announcements-listview" 
-						data-style="inset"  data-template="announcement-listview-template" data-bind="source: announcements">
-					</ul>
+					
 				</div>
-			</div>
+			    <ul data-role="listview" data-style="inset">
+
+                  </ul>
+   </div>
 		</div>
 
         
 		<!-- Home page template -->
 		<script type="text/x-kendo-template" id="announcement-listview-template">
-			<a href="#:pageurl#"><img  class="item-photo" src="#:url#" >
-			<div><h3   class="item-title">#:title#</h3>
-			<p  class="item-info">#:description#</p></div>
-        <div class="clear"></div></a>
+			<a href="#:pageurl#"><img  class="item-photo" src="#:url#">
+			<h3   class="item-title">#:title#</h3>
+			<p  class="item-info">#:description#</p></a>
 		</script>
 <script>
 			var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
 		</script>
 	</body>
 </html>
+
+
+   

@@ -1,6 +1,5 @@
 (function($, console, doc) {
 	var announcementViewModel,
-        sutraViewModel,
     	cardsViewModel,
     	AddCardViewModel,
     	CardsViewModelBase,
@@ -9,7 +8,7 @@
         
 	AddCardViewModel = kendo.data.ObservableObject.extend({
 		cardNumber: null,
-        
+         
 		init: function() {
 			kendo.data.ObservableObject.fn.init.apply(this, [this]);
 			var that = this;
@@ -229,14 +228,6 @@
 			that.set("announcements", announcements);
 		}
 	});
-    sutraViewModel = kendo.observable({
-		sutras: [],
-        
-		load: function(sutras) {
-			var that = this;
-			that.set("sutras", sutras);
-		}
-	});
 
 	cardsViewModel = kendo.observable({
 		cards : [],
@@ -283,7 +274,6 @@
 		rewardsViewModel: new RewardsViewModel(),
 		addCardViewModel: new AddCardViewModel(),
 		announcementViewModel: announcementViewModel,
-        sutraViewModel: sutraViewModel,
 		cardsViewModel: cardsViewModel
 	});
     
