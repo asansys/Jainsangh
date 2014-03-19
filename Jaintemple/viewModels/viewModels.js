@@ -1,11 +1,13 @@
 (function($, console, doc) {
 	var announcementViewModel,
-        sutraViewModel,
+        
     	cardsViewModel,
     	AddCardViewModel,
     	CardsViewModelBase,
     	SingleCardViewModel,
-    	RewardsViewModel;
+    	SingleSutraViewModel,
+    	RewardsViewModel,
+    	SutraViewModel;
         
 	AddCardViewModel = kendo.data.ObservableObject.extend({
 		cardNumber: null,
@@ -156,7 +158,8 @@
 			that.set("barcodeURL", bonusPoints);
 			that.set("currentDate", kendo.toString(new Date(), "yyyy/MM/dd hh:mm tt"));
 		},
-        
+       
+       
 		deleteCard: function() {
 			var that = this, 
     			cardIdString = that.cardId,
@@ -180,7 +183,16 @@
 			} 
 		}
 	});
-
+ SingleSutraViewModel = CardsViewModelBase.extend({
+		sutraNumber1: "",
+        
+		setValues: function(sutraNumber) {
+			var that = this;
+			     
+			that.set("sutraNumber1", sutraNumber);
+			
+		},
+       });
 	RewardsViewModel = CardsViewModelBase.extend({
 		_rewardsForCard : {
 			gold : [
@@ -280,6 +292,7 @@
 
 	$.extend(window, {
 		singleCardViewModel: new SingleCardViewModel(),
+        singleSutraViewModel: new SingleSutraViewModel(),
 		rewardsViewModel: new RewardsViewModel(),
 		addCardViewModel: new AddCardViewModel(),
 		announcementViewModel: announcementViewModel,

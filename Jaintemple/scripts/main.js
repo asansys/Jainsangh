@@ -164,7 +164,7 @@
             addCardViewModel.resetView();
 		},
         
-            
+        
 		rewardCardShow: function(e) {
 			var bonusPoints = e.view.params.bonusPoints,
 			    cardNumber = e.view.params.cardNumber;
@@ -188,7 +188,10 @@
             
 			singleCardViewModel.setValues(cardNumber, bonusPoints, cardAmount);
 		},
-        
+        singleSutraShow: function (args) {
+			var sutraNumber = args.view.params.id;
+    		SingleSutraViewModel.setValues(sutraNumber);
+		},
 		singleCardInit: function(e) {
 			var container = e.view.content,
     			$cardFront = container.find("#cardFront"),
@@ -257,7 +260,9 @@
         sutraData: _app.sutraData,
 		onStoresShow: _app.storesShow,
         pdfShow: _app.pdfShow,
-		storesInit: _app.storesInit
+		storesInit: _app.storesInit,
+        singleSutraShow: _app.singleSutraShow
+		
 	});
 }(jQuery, document));
 
