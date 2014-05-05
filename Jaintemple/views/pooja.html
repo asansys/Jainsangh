@@ -59,14 +59,19 @@
 		<!-- Home page -->
 		<div data-role="view" id="home" data-title="Pooja" data-model="announcementViewModel">
 			<div data-role="content">
-				<div id="announcements">
-					
-				</div>
+				<div id="announcements">Loading....
+                    </div>
 			    <ul data-role="listview" data-style="inset">
+                    <div id="eventlist">
+                    <b>Upcoming Events:</b>	<br></div>
+ 
+  
+				
+		
 
                   </ul>
    </div>
-		</div>
+		
 
         
 		<!-- Home page template -->
@@ -77,7 +82,23 @@
 		</script>
 <script>
 			var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
+    $(document).ready(function(){
+    $.getJSON("http://api.tumblr.com/v2/blog/anandsan.tumblr.com/posts/text?api_key=i5W92xXH0ehHG45fi6jJtCkNszdgKXRJ6Q8kNXRHmcc77i9iOd&id=84769911165&callback=?",
+    function(data){
+        //alert(data.result);   
+     $('#eventlist').text(data.result);
+        
+    });
+   // alert('out');
+    //$.getJSON("http://media.jainsangh.org/sootra/pooja.json?callback=?",
+       // function(data){
+         //   $('#eventlist').text(data.result);
+    
+    //    });
+  });
+   // document.getElementById('test').innerHTML = "<audio controls='controls' width='100%' height='100px' id='stream'><source src="+window.location.search.substring(1).split('=')[1]+" ></audio>";
 		</script>
+            </div>
 	</body>
 </html>
 
