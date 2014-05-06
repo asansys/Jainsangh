@@ -59,27 +59,42 @@
 		<!-- Home page -->
 		<div data-role="view" id="home" data-title="Pathshala Schedule" data-model="announcementViewModel">
 			<div data-role="content">
-				<div id="announcements">
+				<div id="posts">
 					
 				</div>
 			    <ul data-role="listview" data-style="inset">
 
     
                                       
-                   <img width=95%  src="images/sch.png">
+                   <img id=pathshala width=95%  src="http://37.media.tumblr.com//4ceabd06eedf4477a7300011a77f6cfc//tumblr_n54suxD3nP1tamdbto1_1280.png">
                   </ul>
    </div>
 		</div>
 
         
-		<!-- Home page template -->
-		<script type="text/x-kendo-template" id="announcement-listview-template">
-			<a href="#:pageurl#"><img  class="item-photo" src="#:url#">
-			<h3   class="item-title">#:title#</h3>
-			<p  class="item-info">#:description#</p></a>
-		</script>
-<script>
-			var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
+		<script>
+   var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
+   $(document).ready((function () {
+        
+    var API_KEY = "i5W92xXH0ehHG45fi6jJtCkNszdgKXRJ6Q8kNXRHmcc77i9iOd";
+
+     var tumblrAPI = "http://api.tumblr.com/v2/blog/anandsan.tumblr.com/posts/link?api_key=" + API_KEY + "&callback=?";
+
+    $.getJSON(tumblrAPI).done(function (data) {
+        //$('#posts').append(data.response.blog.url);
+        $.each(data.response.posts, function (i, item) {
+           //$('#posts').append(item.slug);
+            $("#pathshala").attr("src", item.url);
+           // $("<div>").img(item.photos.original_size.url).appendTo("#posts");
+        });
+    });
+}));
+    
+  
+       
+		
+  
+
 		</script>
 	</body>
 </html>

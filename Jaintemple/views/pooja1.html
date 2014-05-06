@@ -83,24 +83,20 @@
 <script>
     //var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
    $(document).ready((function () {
-        if(pageInitialized) return;
-    pageInitialized = true;
+      //  if(pageInitialized) return;
+    //pageInitialized = true;
     var API_KEY = "i5W92xXH0ehHG45fi6jJtCkNszdgKXRJ6Q8kNXRHmcc77i9iOd";
 
     var tumblrAPI = "http://api.tumblr.com/v2/blog/anandsan.tumblr.com/posts/text?api_key=" + API_KEY + "&callback=?";
 
     $.getJSON(tumblrAPI).done(function (data) {
-        //$('#posts').append(data.response.blog.url);
+       
         $.each(data.response.posts, function (i, item) {
-            $("<div>").addClass("post").html(item.body).appendTo("#posts");
+             $('#posts').append(item.title);
+            $("<div>").html(item.body).appendTo("#posts");
         });
     });
 }));
-    
-  
-       
-		
-  
 
 		</script>
 	</body>
