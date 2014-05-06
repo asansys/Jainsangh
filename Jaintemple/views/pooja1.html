@@ -3,6 +3,7 @@
 <html>
 	<head>
 		<title>JainSangh</title>
+       
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
  
@@ -37,18 +38,23 @@
 		<link rel="stylesheet" media="only screen and (min-device-width: 600px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio:1)" href="styles/tablet-600-1024.css" type="text/css" />
 		<!-- Tablet 768x1024 High DPI (aka iPad3") -->
 		<link rel="stylesheet" media="only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio:2)" href="styles/tablet-1024-hdpi.css" type="text/css" />
-	</head>
+	 
+    </head>
 	<body>
-		<!-- Page Layout -->
+      
+    	<!-- Page Layout -->
 		<div data-role="layout" data-id="jitterz-default">
 			<header data-role="header" data-id="jitterz-default-header">
+               
+        
 				<div data-role="navbar">
 					<span data-role="view-title"></span>
 				</div>
+                
 			</header>
 			<div data-role="footer">
 				<div data-role="tabstrip" data-id="jitterz-tabstrip">
-					<a href="index.html" data-icon="home">Home</a>
+					<a href="#home" data-icon="home">Home</a>
 					<a href="views/pathshala.html" data-icon="card">Pathshala</a>
 					
 					<a href="views/storesView.html" data-icon="stores">Directions</a>
@@ -57,21 +63,17 @@
 		</div>
 
 		<!-- Home page -->
-		<div data-role="view" id="home" data-title="Pooja" data-model="announcementViewModel">
-			<div data-role="content">
-				<div id="announcements">Loading....
-                    </div>
+		<div data-role="view" id="home" data-title="Pooja Schedule" data-init="init"  >
+			<div data-role="content" >
+				<div id="Announcements">
+					
+				</div>
 			    <ul data-role="listview" data-style="inset">
-                    <div id="eventlist">
-                    <b>Upcoming Events:</b>	<br></div>
- 
-  
-				
-		
+                    <div id="posts"></div>
 
                   </ul>
    </div>
-		
+		</div>
 
         
 		<!-- Home page template -->
@@ -81,24 +83,25 @@
 			<p  class="item-info">#:description#</p></a>
 		</script>
 <script>
-			var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
-    $(document).ready(function(){
-    $.getJSON("http://api.tumblr.com/v2/blog/anandsan.tumblr.com/posts/text?api_key=i5W92xXH0ehHG45fi6jJtCkNszdgKXRJ6Q8kNXRHmcc77i9iOd&id=84769911165&callback=?",
-    function(data){
-        alert(data.response.blog.body);   
-     $('#eventlist').text(data.result);
-        
+   $(document).ready((function () {
+    var API_KEY = "i5W92xXH0ehHG45fi6jJtCkNszdgKXRJ6Q8kNXRHmcc77i9iOd";
+
+    var tumblrAPI = "http://api.tumblr.com/v2/blog/anandsan.tumblr.com/posts/text?api_key=" + API_KEY + "&callback=?";
+
+    $.getJSON(tumblrAPI).done(function (data) {
+        //$('#posts').append(data.response.blog.url);
+        $.each(data.response.posts, function (i, item) {
+            $("<div>").addClass("post").html(item.body).appendTo("#posts");
+        });
     });
-   // alert('out');
-    //$.getJSON("http://media.jainsangh.org/sootra/pooja.json?callback=?",
-       // function(data){
-         //   $('#eventlist').text(data.result);
+}));
     
-    //    });
-  });
-   // document.getElementById('test').innerHTML = "<audio controls='controls' width='100%' height='100px' id='stream'><source src="+window.location.search.substring(1).split('=')[1]+" ></audio>";
+   var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
+       
+		
+  
+
 		</script>
-            </div>
 	</body>
 </html>
 

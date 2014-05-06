@@ -15,7 +15,7 @@ var AppData = function() {
 	];
     
 	_announcements = [
-		{ title: "Pooja Schedule", description: "Schedule for derasar pooja function.", url: "images/mahavir.jpg", pageurl: "views/pooja.html" },
+		{ title: "Pooja Schedule", description: "Schedule for derasar pooja function.", url: "images/mahavir.jpg", pageurl: "views/pooja1.html" },
 		{ title: "Sutra", description: "Easy access to all available sutra.", url: "images/jainsymbol1.jpg", pageurl: "views/sutra.html" },
 		//{ title: "Lectures", description: "Click here for lectures.", url: "images/jainsangh.png",  pageurl: "views/rewardsView.html" },
 		{ title: "Donations", description: "Please donate generously.", url: "images/donate.png" , pageurl: "views/donations.html" },
