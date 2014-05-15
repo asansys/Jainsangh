@@ -54,7 +54,7 @@
 			</header>
 			<div data-role="footer">
 				<div data-role="tabstrip" data-id="jitterz-tabstrip">
-					<a href="#home" data-icon="home">Home</a>
+					<a href="#index.html" data-icon="home">Home</a>
 					<a href="views/pathshala.html" data-icon="card">Pathshala</a>
 					
 					<a href="views/directions.html" data-icon="stores">Directions</a>
@@ -69,22 +69,22 @@
 					
 				</div>
 			    <ul data-role="listview" data-style="inset">
-                    <div id="posts"></div>
+                    <div id="schedule" data-style="inset"></div>
 
                   </ul>
    </div>
 		</div>
 
-        <script>
-        var pageInitialized = false;
-          </script>
+        
 		<!-- Home page template -->
 		
 <script>
     //var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
+   
    $(document).ready((function () {
       //  if(pageInitialized) return;
     //pageInitialized = true;
+       
     var API_KEY = "i5W92xXH0ehHG45fi6jJtCkNszdgKXRJ6Q8kNXRHmcc77i9iOd";
 
     var tumblrAPI = "http://api.tumblr.com/v2/blog/anandsan.tumblr.com/posts/text?api_key=" + API_KEY + "&callback=?";
@@ -92,8 +92,9 @@
     $.getJSON(tumblrAPI).done(function (data) {
        
         $.each(data.response.posts, function (i, item) {
-             $('#posts').append(item.title);
-            $("<div>").html(item.body).appendTo("#posts");
+             $('#schedule').append(item.title);
+            $('#schedule').append(item.body);
+          //  $("<div>").html(item.body).appendTo("#schedule");
         });
     });
 }));
