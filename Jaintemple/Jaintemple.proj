@@ -16,7 +16,7 @@
     <iOSDeviceFamily>1;2</iOSDeviceFamily>
     <iOSBackgroundMode>audio</iOSBackgroundMode>
     <FrameworkVersion>3.2.0</FrameworkVersion>
-    <CorePlugins>org.apache.cordova.geolocation;org.apache.cordova.media;com.phonegap.plugins.PushPlugin;org.apache.cordova.splashscreen;org.apache.cordova.statusbar</CorePlugins>
+    <CorePlugins>org.apache.cordova.geolocation;org.apache.cordova.inappbrowser;org.apache.cordova.media;org.apache.cordova.dialogs;com.phonegap.plugins.PushPlugin;org.apache.cordova.splashscreen;org.apache.cordova.statusbar</CorePlugins>
     <WP8SupportedResolutions>ID_RESOLUTION_WVGA;ID_RESOLUTION_WXGA;ID_RESOLUTION_HD720P</WP8SupportedResolutions>
     <DisplayName>JainSangh</DisplayName>
     <Author>Anand Sancheti</Author>
