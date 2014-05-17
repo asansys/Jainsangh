@@ -1,10 +1,7 @@
-
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>JainSangh</title>
-       
-		<meta charset="utf-8" />
+<html >
+    <head>
+    <meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
  
 		<!-- Styles -->
@@ -13,7 +10,7 @@
         
         <!-- Scripts -->
 		<script type="text/javascript" src="cordova.js"></script>
-	
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 		<script type="text/javascript" src="kendo/js/jquery.min.js"></script>
 		<script type="text/javascript" src="kendo/js/kendo.mobile.min.js"></script>
 		<script type="text/javascript" src="scripts/appData.js"></script>
@@ -38,70 +35,75 @@
 		<link rel="stylesheet" media="only screen and (min-device-width: 600px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio:1)" href="styles/tablet-600-1024.css" type="text/css" />
 		<!-- Tablet 768x1024 High DPI (aka iPad3") -->
 		<link rel="stylesheet" media="only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio:2)" href="styles/tablet-1024-hdpi.css" type="text/css" />
-	  
-    </head>
-	<body>
-      
-    	<!-- Page Layout -->
+	</head>
+    <body>
+        <!-- Page Layout -->
 		<div data-role="layout" data-id="jitterz-default">
 			<header data-role="header" data-id="jitterz-default-header">
-               
-        
 				<div data-role="navbar">
 					<span data-role="view-title"></span>
 				</div>
-                
 			</header>
 			<div data-role="footer">
 				<div data-role="tabstrip" data-id="jitterz-tabstrip">
-					<a href="#index.html" data-icon="home">Home</a>
-					<a href="views/pathshala.html" data-icon="card">Pathshala</a>
+					<a href="index.html" data-icon="home">Home</a>
+					<a href="pathshala.html" data-icon="card">Pathshala</a>
 					
-					<a href="views/directions.html" data-icon="stores">Directions</a>
+					<a href="directions.html" data-icon="stores">Directions</a>
 				</div>
 			</div>
 		</div>
-
-		<!-- Home page -->
-		<div data-role="view" id="home" data-title="Pooja Schedule" data-init="init"  >
-			<div data-role="content" >
-				<div id="Announcements">
-					
-				</div>
-			    <ul data-role="listview" data-style="inset">
-                    <div id="schedule" data-style="inset"></div>
-
-                  </ul>
-   </div>
-		</div>
-
         
-		<!-- Home page template -->
-		
-<script>
-    //var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
-   
-   $(document).ready((function () {
-      //  if(pageInitialized) return;
-    //pageInitialized = true;
+        <div data-role="page" id="direction">
+    <p id="deviceProperties">
+        
+        
+        
+        
+        
+        
+        
+        Directions will be loaded in Device GPS...</p>
+
+    </div>
+      <script>
+       //
+
+ document.addEventListener("deviceready", onDeviceReady, true);
+        function showPosition(position)
+        {
+             if(device.platform=="Android")
+            var link = "http://maps.google.com/maps?saddr=YPlatYPlong&daddr=39.956704,-75.038644";
+        else
+
+        var link = "maps:saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
+          
+
+            link = link.replace("YPlat",position.coords.latitude);
+            link = link.replace("YPlong",position.coords.longitude);
+            
+
+            window.location = link;
+        } 
+          
+          var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
+          
+
+        // device APIs are available
+
+
+        function onDeviceReady() {
+           
+          
+            
+        navigator.geolocation.getCurrentPosition(showPosition);
+            }
+           
+           // var status = device.platform;
+            
+           
+    </script>
+     
        
-    var API_KEY = "i5W92xXH0ehHG45fi6jJtCkNszdgKXRJ6Q8kNXRHmcc77i9iOd";
-
-    var tumblrAPI = "http://api.tumblr.com/v2/blog/anandsan.tumblr.com/posts/text?api_key=" + API_KEY + "&callback=?";
-
-    $.getJSON(tumblrAPI).done(function (data) {
-       
-        $.each(data.response.posts, function (i, item) {
-             $('#schedule').append(item.title);
-            $('#schedule').append(item.body);
-          //  $("<div>").html(item.body).appendTo("#schedule");
-        });
-    });
-}));
-
-		</script>
-	</body>
+    </body>
 </html>
-
-
-   
