@@ -1,0 +1,45 @@
+
+	
+		<!-- Home page -->
+		<div data-role="view" id="pathshalasch" data-title="Pathshala Schedule" >
+			<div data-role="content">
+				<div id="posts">
+					
+				</div>
+			    <ul data-role="listview" data-style="inset">
+
+    
+                                      
+                   <img id="pathshala" width="95%"  >
+                  </ul>
+   </div>
+		</div>
+
+        
+		<script>
+   var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
+   $(document).ready((function () {
+        
+    var API_KEY = "i5W92xXH0ehHG45fi6jJtCkNszdgKXRJ6Q8kNXRHmcc77i9iOd";
+
+     var tumblrAPI = "http://api.tumblr.com/v2/blog/anandsan.tumblr.com/posts/link?api_key=" + API_KEY + "&callback=?";
+
+    $.getJSON(tumblrAPI).done(function (data) {
+        //$('#posts').append(data.response.blog.url);
+        $.each(data.response.posts, function (i, item) {
+           //$('#posts').append(item.slug);
+            $("#pathshala").attr("src", item.url);
+           // $("<div>").img(item.photos.original_size.url).appendTo("#posts");
+        });
+    });
+}));
+    
+  
+       
+		
+  
+
+		</script>
+	
+
+   
