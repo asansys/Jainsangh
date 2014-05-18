@@ -41,7 +41,7 @@
 		<div data-role="layout" data-id="jitterz-default">
 			<header data-role="header" data-id="jitterz-default-header">
 				<div data-role="navbar">
-					<span data-role="view-title"></span>
+					<span data-role="view-title">Directions</span>
 				</div>
 			</header>
 			<div data-role="footer">
@@ -53,26 +53,22 @@
 				</div>
 			</div>
 		</div>
-        
-        <div data-role="page" id="direction">
-    <p id="deviceProperties">
-        
-        
-        
-        
-        
-        
-        
-        Directions will be loaded in Device GPS...</p>
-
-    </div>
-      <script>
-       //
-
- 			document.addEventListener("deviceready", onDeviceReady, true);
            
-          
-        function showPosition(position)
+       
+        <div id="View1" data-role="view">	 Jain Sangh Of NJ, PA and DE
+                    3401 Cooper Ave, Pennsauken, NJ 08109
+
+<br>
+
+
+            <a data-role="button" data-icon="favorites" data-click="onClick">Direction to Temple</a>
+           
+ 
+
+
+<script>
+var app = new kendo.mobile.Application();
+     function showPosition(position)
         {
             var link ;
             if(device.platform=="Android")
@@ -101,24 +97,11 @@ if(device.platform=="Android")
             //cordova.exec(null, null, "InAppBrowser", "open", [link, "_system"]);
           // window.open(link," window.open( url, "_system" ) ");
         } 
-          
-       
-
-        // device APIs are available
-
-
-        function onDeviceReady() {
-           
-          
-            
-        navigator.geolocation.getCurrentPosition(showPosition);
-            }
-           
-           // var status = device.platform;
-            
-           
-    </script>
-     
-       
+function onClick() {
+  console.log("clicked");
+     navigator.geolocation.getCurrentPosition(showPosition);
+}
+</script>
+        </div>
     </body>
 </html>
