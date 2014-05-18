@@ -49,17 +49,18 @@
 					<a href="index.html" data-icon="home">Home</a>
 					<a href="pathshala.html" data-icon="card">Pathshala</a>
 					
-					<a href="directions.html" data-icon="stores">Directions</a>
+					<a href="#directions" data-icon="stores">Directions</a>
 				</div>
 			</div>
 		</div>
            
        
-        <div id="View1" data-role="view">	 Jain Sangh Of NJ, PA and DE
+        <div id="directions" data-role="view">
+            <div data-role="content">Jain Sangh Of NJ, PA and DE
                     3401 Cooper Ave, Pennsauken, NJ 08109
 
 <br>
-
+</div>
 
             <a data-role="button" data-icon="favorites" data-click="onClick">Direction to Temple</a>
            
@@ -67,36 +68,38 @@
 
 
 <script>
-var app = new kendo.mobile.Application();
+var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
      function showPosition(position)
         {
             var link ;
-            if(device.platform=="Android")
-           {link=  "http://maps.google.com/maps?saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
-               }
-        else
+          //  if(device.platform=="Android")
+          // {link=  "http://maps.google.com/maps?saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
+            //   }
+       // else
 {
         link = "maps:saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
-          }
+    alert(link);
+       //   }
 
             link = link.replace("YPlat",position.coords.latitude);
             link = link.replace("YPlong",position.coords.longitude);
             link = encodeURI(link);
             alert(link);
             
-if(device.platform=="Android")
+//if(device.platform=="Android")
             { window.open( link, "_blank" ) ;}
            // window.location = link;
             // window.open( link, "_system" ) ;
              
-            else
+           // else
             
-           {window.location = link;}
-            var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
+          // {window.location = link;}
+           
             //https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git
             //cordova.exec(null, null, "InAppBrowser", "open", [link, "_system"]);
           // window.open(link," window.open( url, "_system" ) ");
         } 
+            }
 function onClick() {
   console.log("clicked");
      navigator.geolocation.getCurrentPosition(showPosition);
