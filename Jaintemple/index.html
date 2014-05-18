@@ -50,7 +50,7 @@
 					<a href="#home" data-icon="home">Home</a>
 					<a href="pathshala.html" data-icon="card">Pathshala</a>
 					
-					<a href="directions.html" data-icon="stores">Directions</a>
+					<a href="#directions" data-icon="stores">Directions</a>
 				</div>
 			</div>
 		</div>
@@ -66,7 +66,29 @@
 			</div>
 		</div>
 
-        
+         <div id="directions" data-role="view" data-layout="jitterz-default" data-title="Directions">
+            <div data-role="content">
+                 <img  class="item-photo" src="images/jainsymbol1.jpg" >
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div id="Addressdetails" class="addCardLogoText">
+				Jain Sangh <br>
+                3401 Cooper Ave, Pennsauken<br>
+                NJ 08109      
+                             
+               </div>
+
+<br>
+
+
+            <a data-role="button" data-icon="globe" data-click="onClick">Direction to Temple</a>
+           
+			</div>
+ </div>
+
 		<!-- Home page template -->
 		<script type="text/x-kendo-template" id="announcement-listview-template">
 			<a href="#:pageurl#"><img  class="item-photo" src="#:url#" >
@@ -76,7 +98,45 @@
 		</script>
 <script>
 			var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
-   
+   function showPosition(position)
+        {
+            var link ;
+          //  if(device.platform=="Android")
+          // {link=  "http://maps.google.com/maps?saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
+            //   }
+       // else
+{
+        link = "maps:saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
+    alert(link);
+       //   }
+ var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  alert("Latitude : " + latitude + " Longitude: " + longitude);
+            link = link.replace("YPlat",position.coords.latitude);
+            link = link.replace("YPlong",position.coords.longitude);
+            link = encodeURI(link);
+            alert(link);
+            
+//if(device.platform=="Android")
+    window.location = link;
+            { window.open( link, "_blank" ) ;}
+           // window.location = link;
+    
+            // window.open( link, "_system" ) ;
+             
+           // else
+            
+          // {window.location = link;}
+           
+            //https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git
+            //cordova.exec(null, null, "InAppBrowser", "open", [link, "_system"]);
+          // window.open(link," window.open( url, "_system" ) ");
+        } 
+            }
+function onClick() {
+  
+     navigator.geolocation.getCurrentPosition(showPosition);
+}
 
 		</script>
 	</body>

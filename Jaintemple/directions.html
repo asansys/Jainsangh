@@ -57,18 +57,17 @@
        
         <div id="directions" data-role="view" data-layout="jitterz-default" data-title="Directions">
             <div data-role="content">
-                
-                
+                 <img  class="item-photo" src="images/jainsymbol1.jpg" >
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
                 <div id="Addressdetails" class="addCardLogoText">
-					
-				
-			   
-
-    
-                                 Jain Sangh Of NJ, PA and DE<br>
-                    3401 Cooper Ave, Pennsauken, NJ 08109      
-                   
-                  
+				Jain Sangh <br>
+                3401 Cooper Ave, Pennsauken<br>
+                NJ 08109      
+                             
                </div>
 
 <br>
@@ -76,6 +75,7 @@
 
             <a data-role="button" data-icon="globe" data-click="onClick">Direction to Temple</a>
            
+			</div>
  </div>
 
 
@@ -101,6 +101,7 @@ var app = new kendo.mobile.Application(document.body, { transition: "slide", lay
             alert(link);
             
 //if(device.platform=="Android")
+    window.location = link;
             { window.open( link, "_blank" ) ;}
            // window.location = link;
     
@@ -116,10 +117,10 @@ var app = new kendo.mobile.Application(document.body, { transition: "slide", lay
         } 
             }
 function onClick() {
-  console.log("clicked");
+  
      navigator.geolocation.getCurrentPosition(showPosition);
 }
 </script>
-        </div>
+       
     </body>
 </html>
