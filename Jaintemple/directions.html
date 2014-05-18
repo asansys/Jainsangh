@@ -38,10 +38,10 @@
 	</head>
     <body>
         <!-- Page Layout -->
-		<div data-role="layout" data-id="jitterz-default">
+	<div data-role="layout" data-id="jitterz-default">
 			<header data-role="header" data-id="jitterz-default-header">
 				<div data-role="navbar">
-					<span data-role="view-title">Directions</span>
+					<span data-role="view-title"></span>
 				</div>
 			</header>
 			<div data-role="footer">
@@ -53,16 +53,28 @@
 				</div>
 			</div>
 		</div>
-           
+
        
-        <div id="directions" data-role="view">
-            <div data-role="content">Jain Sangh Of NJ, PA and DE
-                    3401 Cooper Ave, Pennsauken, NJ 08109
+        <div id="directions" data-role="view" data-layout="jitterz-default" data-title="Directions">
+            <div data-role="content">
+                
+                
+                <div id="Addressdetails" class="addCardLogoText">
+					
+				
+			   
+
+    
+                                 Jain Sangh Of NJ, PA and DE<br>
+                    3401 Cooper Ave, Pennsauken, NJ 08109      
+                   
+                  
+               </div>
 
 <br>
 
 
-            <a data-role="button" data-icon="favorites" data-click="onClick">Direction to Temple</a>
+            <a data-role="button" data-icon="globe" data-click="onClick">Direction to Temple</a>
            
  </div>
 
