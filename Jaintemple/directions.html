@@ -80,7 +80,9 @@ var app = new kendo.mobile.Application(document.body, { transition: "slide", lay
         link = "maps:saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
     alert(link);
        //   }
-
+ var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  alert("Latitude : " + latitude + " Longitude: " + longitude);
             link = link.replace("YPlat",position.coords.latitude);
             link = link.replace("YPlong",position.coords.longitude);
             link = encodeURI(link);
@@ -89,6 +91,7 @@ var app = new kendo.mobile.Application(document.body, { transition: "slide", lay
 //if(device.platform=="Android")
             { window.open( link, "_blank" ) ;}
            // window.location = link;
+    
             // window.open( link, "_system" ) ;
              
            // else
