@@ -101,10 +101,10 @@
    function showPosition(position)
         {
             var link ;
-            if(device.platform=="Android")
+          //  if(device.platform=="Android")
            {link=  "http://maps.google.com/maps?saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
              }
-       else
+      // else
 {
        link = "maps:saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
    // alert(link);
@@ -117,14 +117,14 @@
             link = encodeURI(link);
           //  alert(link);
             
-if(device.platform=="Android")
+//if(device.platform=="Android")
    // window.location = link;
             { window.open( link, "_system" ) ;}
            // window.location = link;
     
             // window.open( link, "_system" ) ;
              
-            else
+          //  else
             
            {window.location = link;}
            
