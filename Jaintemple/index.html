@@ -104,9 +104,9 @@
             if(device.platform=="Android")
            {link=  "http://maps.google.com/maps?saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
              }
-       // else
+       else
 {
-       // link = "maps:saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
+       link = "maps:saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
    // alert(link);
        //   }
  //var latitude = position.coords.latitude;
@@ -117,16 +117,16 @@
             link = encodeURI(link);
           //  alert(link);
             
-//if(device.platform=="Android")
+if(device.platform=="Android")
    // window.location = link;
             { window.open( link, "_system" ) ;}
            // window.location = link;
     
             // window.open( link, "_system" ) ;
              
-           // else
+            else
             
-          // {window.location = link;}
+           {window.location = link;}
            
             //https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git
             //cordova.exec(null, null, "InAppBrowser", "open", [link, "_system"]);
