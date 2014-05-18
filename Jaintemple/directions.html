@@ -72,22 +72,28 @@
  document.addEventListener("deviceready", onDeviceReady, true);
         function showPosition(position)
         {
-           //  if(device.platform=="Android")
-            var link = "http://maps.google.com/maps?saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
-       // else
-
-       // var link = "maps:saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
-          
+            var link ;
+            if(device.platform=="Android")
+           {link=  "http://maps.google.com/maps?saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
+               }
+        else
+{
+        link = "maps:saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
+          }
 
             link = link.replace("YPlat",position.coords.latitude);
             link = link.replace("YPlong",position.coords.longitude);
+            link = encodeURI(link);
+            alert(link);
             
-
+if(device.platform=="Android")
+            { window.open( link, "_blank" ) ;}
            // window.location = link;
             // window.open( link, "_system" ) ;
-             link = encodeURI(link);
-            alert(link);
-            window.open( link, "_blank" ) ;
+             
+            else
+            
+           {window.location = link;}
            
             //https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git
             //cordova.exec(null, null, "InAppBrowser", "open", [link, "_system"]);
