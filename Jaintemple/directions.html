@@ -70,6 +70,8 @@
        //
 
  document.addEventListener("deviceready", onDeviceReady, true);
+            var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
+          
         function showPosition(position)
         {
             var link ;
@@ -100,8 +102,7 @@ if(device.platform=="Android")
           // window.open(link," window.open( url, "_system" ) ");
         } 
           
-         // var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
-          
+       
 
         // device APIs are available
 
