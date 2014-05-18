@@ -68,7 +68,7 @@
 
          <div id="directions" data-role="view" data-layout="jitterz-default" data-title="Directions">
             <div data-role="content">
-                 <img  class="item-photo" src="images/jainsymbol1.jpg" >
+                 <img   src="images/jainsangh.png" >
                 <br>
                 <br>
                 <br>
@@ -101,25 +101,25 @@
    function showPosition(position)
         {
             var link ;
-          //  if(device.platform=="Android")
-          // {link=  "http://maps.google.com/maps?saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
-            //   }
+            if(device.platform=="Android")
+           {link=  "http://maps.google.com/maps?saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
+             }
        // else
 {
-        link = "maps:saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
-    alert(link);
+       // link = "maps:saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
+   // alert(link);
        //   }
- var latitude = position.coords.latitude;
-  var longitude = position.coords.longitude;
-  alert("Latitude : " + latitude + " Longitude: " + longitude);
+ //var latitude = position.coords.latitude;
+  //var longitude = position.coords.longitude;
+  //alert("Latitude : " + latitude + " Longitude: " + longitude);
             link = link.replace("YPlat",position.coords.latitude);
             link = link.replace("YPlong",position.coords.longitude);
             link = encodeURI(link);
-            alert(link);
+          //  alert(link);
             
 //if(device.platform=="Android")
-    window.location = link;
-            { window.open( link, "_blank" ) ;}
+   // window.location = link;
+            { window.open( link, "_system" ) ;}
            // window.location = link;
     
             // window.open( link, "_system" ) ;
