@@ -24,6 +24,7 @@
     <content src="index.html" />
 
     <plugins>
+<plugin name="InAppBrowser" value="CDVInAppBrowser" />
         <plugin name="Device" value="CDVDevice" />
         <plugin name="Logger" value="CDVLogger" />
         <plugin name="Compass" value="CDVLocation" />
@@ -41,8 +42,7 @@
         <plugin name="SplashScreen" value="CDVSplashScreen" />
         <plugin name="Battery" value="CDVBattery" />
         <plugin name="Globalization" value="CDVGlobalization" />
-        <plugin name="InAppBrowser" value="CDVInAppBrowser" />
-<gap:plugin name="org.apache.cordova.inappbrowser" />
+       
     </plugins>
 
     <access origin="*" />
