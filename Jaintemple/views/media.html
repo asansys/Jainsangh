@@ -55,88 +55,110 @@
 				</div>
 			</div>
 		</div>
+        </body>
+</html>
 
-		<!-- Home page -->
-		<div data-role="view" id="home" data-title="Cherry Hill Jain Sangh" data-model="announcementViewModel">
-			<div data-role="content">
-				<div id="announcements">
-					<ul data-role="listview" id="announcements-listview" 
-						data-style="inset"  data-template="announcement-listview-template" data-bind="source: announcements">
-					</ul>
+<div data-role="view" id="media" data-title="Sutra"   >
+			<div data-role="content" >
+				<div id="media">  
+                    <a href="#" class="btn large" onclick="playAudio();">Play Audio</a>
+        <a href="#" class="btn large" onclick="pauseAudio();">Pause Playing Audio</a>
+        <a href="#" class="btn large" onclick="stopAudio();">Stop Playing Audio</a>
+        <p id="audio_position"></p>
+					
 				</div>
-			</div>
+			    
+   </div>
 		</div>
 
-         <div id="directions" data-role="view" data-layout="jitterz-default" data-title="Directions">
-            <div data-role="content">
-                 <img   src="images/jainsangh.png" >
-                <br>
-                <br>
-                
-                <div id="Addressdetails" class="addCardLogoText">
-				Jain Sangh <br>
-                3401 Cooper Ave, Pennsauken<br>
-                NJ 08109      
-                             
-               </div>
-
-<br>
+        <script>
+             document.addEventListener("deviceready", onDeviceReady, false);
+            var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
 
 
-            <a data-role="button" data-icon="globe" data-click="onClick">Direction to Temple</a>
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            playAudio();
+        }
+      
+        // Audio player
+        //
+        var my_media = null;
+        var mediaTimer = null;
+
+        // Play audio
+        //
+        function playAudio() {
+            // Create Media object from src
+            var src= window.location.search.substring(1).split('=')[1];
            
-			</div>
- </div>
+            my_media = new Media(src, onSuccess, onError);
 
-		<!-- Home page template -->
-		<script type="text/x-kendo-template" id="announcement-listview-template">
-			<a href="#:pageurl#"><img  class="item-photo" src="#:url#" >
-			<div><h3   class="item-title">#:title#</h3>
-			<p  class="item-info">#:description#</p></div>
-        <div class="clear"></div></a>
-		</script>
-<script>
-			var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
-   function showPosition(position)
-        {
-            var link ;
-          //  if(device.platform=="Android")
-           {link=  "http://maps.google.com/maps?saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
-             }
-      // else
-{
-       link = "maps:saddr=YPlat,YPlong&daddr=39.956704,-75.038644";
-   // alert(link);
-       //   }
- //var latitude = position.coords.latitude;
-  //var longitude = position.coords.longitude;
-  //alert("Latitude : " + latitude + " Longitude: " + longitude);
-            link = link.replace("YPlat",position.coords.latitude);
-            link = link.replace("YPlong",position.coords.longitude);
-            link = encodeURI(link);
-          //  alert(link);
-            
-//if(device.platform=="Android")
-   // window.location = link;
-            { window.open( link, "_system" ) ;}
-           // window.location = link;
-    
-            // window.open( link, "_system" ) ;
-             
-          //  else
-            
-           {window.location = link;}
-           
-            //https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git
-            //cordova.exec(null, null, "InAppBrowser", "open", [link, "_system"]);
-          // window.open(link," window.open( url, "_system" ) ");
-        } 
+            // Play audio
+            my_media.play();
+
+            // Update my_media position every second
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // get my_media position
+                    my_media.getCurrentPosition(
+                        // success callback
+                        function(position) {
+                            if (position > -1) {
+                                setAudioPosition((position) + " sec");
+                            }
+                        },
+                        // error callback
+                        function(e) {
+                            console.log("Error getting pos=" + e);
+                            setAudioPosition("Error: " + e);
+                        }
+                    );
+                }, 1000);
             }
-function onClick() {
-  
-     navigator.geolocation.getCurrentPosition(showPosition);
-}
+        }
 
-		</script>
-	</body>
-</html>
+        // Pause audio
+        //
+        function pauseAudio() {
+            if (my_media) {
+                my_media.pause();
+            }
+        }
+
+        // Stop audio
+        //
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
+        }
+
+        // onSuccess Callback
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
+
+        // onError Callback
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' +
+                  'message: ' + error.message + '\n');
+        }
+
+        // Set audio position
+        //
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
+
+        </script>
+      
+        
+      
+        
+      
