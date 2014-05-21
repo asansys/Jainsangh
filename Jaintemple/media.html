@@ -55,86 +55,135 @@
 			</div>
 		</div>  
 <div data-role="view" id="media" data-title="Sutra"   >
-			<div data-role="content" >
-                
-				<div id="mediacontrol">  
-                   
-        			<p id="audio_position">Sutra audio will play after loading...</p>
-					
-				</div>
-			    
-       <a data-role="button" data-icon="favorites" data-click="stopAudio">Stop Audio</a>
-   </div>
+			<div class="content">
+            <div class="action-area ch50">
+                <button class="button dh" id="buttonPlayAudio">Play</button>
+                <div class="separator"></div>
+			    <button class="button dh" id="buttonPauseAudio">Pause</button>
+                <div class="separator"></div>
+			    <button class="button dh" id="buttonStopAudio">Stop</button>
+                <div class="separator"></div>
+            </div>
+                <div class="separator"></div>
+			<div class="result-area ch50">
+                <div class="results">
+                    <div class="separator"></div>
+                    <div id="result" class="desc"></div>
+                </div>
+            </div>
+			<div class="separator"></div>
 		</div>
+				
+      
+   </div>
+		
 
 <script>
     var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
-      var my_media = null;
-            document.addEventListener("deviceready", onDeviceReady, false);
-          
+     document.addEventListener("deviceready", onDeviceReady, false);
+//Fix :active state on device
+document.addEventListener("touchstart", function() {}, false);
 
-        // device APIs are available
-        //
-        function onDeviceReady() {
-            playAudio();
+var mediaPlayer;
+
+function onDeviceReady() {
+    navigator.splashscreen.hide();
+	mediaPlayer = new MediaPlayer();
+	mediaPlayer.run();
+}
+
+function MediaPlayer() {
+}
+
+MediaPlayer.prototype = {
+	mediaContent : null,
+	isPlaying : false,
+    
+	run: function() {
+		var that = this,
+          //  src = "http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3";
+
+        src= window.location.search.substring(1).split('=')[1];
+		var playAudioButton = document.getElementById("buttonPlayAudio"),
+    		stopAudioButton = document.getElementById("buttonStopAudio"),
+    		pauseAudioButton = document.getElementById("buttonPauseAudio");
+                                
+		playAudioButton.addEventListener("click",
+										 function() {
+											 that._play.apply(that, arguments)
+										 }); 
+
+		stopAudioButton.addEventListener("click", 
+										 function() {
+											 that._stop.apply(that, arguments) 
+										 });
+
+		pauseAudioButton.addEventListener("click", 
+										  function() {
+											  that._pause.apply(that, arguments)
+										  });
+        
+		that.mediaContent = new Media(src, 
+									  function() {
+										  that._onMediaSuccess.apply(that, arguments);
+									  },
+									  function() {
+										  that._onError.apply(that, arguments);
+									  },
+                                      function() {
+                                          that._onMediaStatusChanged.apply(that, arguments);
+                                      });
+	},
+    
+	_onMediaSuccess: function() {
+		console.log("mediaSuccess");
+	},
+    
+	_onError: function(error) {
+		var errorMessage;
+        
+		if(typeof error === "string") {
+			errorMessage = error;
+		} else {
+			errorMessage = "code: " + error.code + "\n" +
+				"message: " + error.message + "\n";
+		}
+        
+		this._showMessage(errorMessage);
+		this.isPlaying = false;
+	},
+    
+    _onMediaStatusChanged: function(status) {
+		console.log("Media status: " + status);
+    },
+    
+	_play: function() {
+        if(this.isPlaying === false) {
+            this.mediaContent.play();
+		    this._showMessage('Playing...');
+		    this.isPlaying = true;
         }
-      
-        // Audio player
-        //
-     
-      //  var mediaTimer = null;
-
-        // Play audio
-        //
-        function playAudio() {
-            // Create Media object from src
-           
-            var src= window.location.search.substring(1).split('=')[1];
-            
-            my_media = new Media(src, onSuccess, onError);
-console.log(src);
-            // Play audio
-            my_media.play();
-
-           
-                }
-
-        // Pause audio
-        //
-        function pauseAudio() {
-            if (my_media) {
-                my_media.pause();
-            }
+	},
+    
+	_pause: function () {
+		if(this.isPlaying === true) {
+            this.mediaContent.pause();
+    		this._showMessage('Paused');
+            this.isPlaying = false;
         }
-
-        // Stop audio
-        //
-        function stopAudio() {
-            if (my_media) {
-                my_media.stop();
-            }
-           
-        }
-
-        // onSuccess Callback
-        //
-        function onSuccess() {
-            console.log("playAudio():Audio Success");
-        }
-
-        // onError Callback
-        //
-        function onError(error) {
-            alert('code: '    + error.code    + '\n' +
-                  'message: ' + error.message + '\n');
-        }
-
-        // Set audio position
-        //
-        function setAudioPosition(position) {
-            document.getElementById('audio_position').innerHTML = position;
-        }
-
+	},
+    
+	_stop: function () {
+        this.mediaContent.stop();
+		this._showMessage('');
+		this.isPlaying = false;
+	},
+    
+	_showMessage: function(text) {
+		var statusBox = document.getElementById('result');
+		statusBox.innerText = text;
+	}
+}
         </script>
       </body>
 </html>
