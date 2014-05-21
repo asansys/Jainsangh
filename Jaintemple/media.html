@@ -63,14 +63,15 @@
 					
 				</div>
 			    
-       <a data-role="button" data-icon="favorites" data-click="pauseAudio">Stop Audio</a>
+       <a data-role="button" data-icon="favorites" data-click="stopAudio">Stop Audio</a>
    </div>
 		</div>
 
 <script>
     var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
+      var my_media = null;
             document.addEventListener("deviceready", onDeviceReady, false);
-           
+          
 
         // device APIs are available
         //
@@ -80,8 +81,8 @@
       
         // Audio player
         //
-      //  var my_media = null;
-        var mediaTimer = null;
+     
+      //  var mediaTimer = null;
 
         // Play audio
         //
@@ -89,9 +90,9 @@
             // Create Media object from src
            
             var src= window.location.search.substring(1).split('=')[1];
-           
+            
             my_media = new Media(src, onSuccess, onError);
-
+console.log(src);
             // Play audio
             my_media.play();
 
