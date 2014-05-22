@@ -20,9 +20,9 @@
       
 
 		<!-- Default Stylesheet -->
+         <link rel="stylesheet" href="styles/media.css" />
 		<link rel="stylesheet" href="styles/main.css" />
-        <link rel="stylesheet" href="styles/media.css" />
-
+        
 		<!-- Phone 320x480 High DPI (aka Retina) -->
 		<link rel="stylesheet" media="only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio:2)" href="styles/phone-480.css" type="text/css" />
 		<!-- Phone 480x800 Medium DPI (aka Samsung Galaxy S II Skyrocket) -->
@@ -55,27 +55,23 @@
 			</div>
 		</div>  
 <div data-role="view" id="media" data-title="Sutra"   >
-			<div class="content">
-            <div class="action-area ch50">
+			  <div id="result" class="desc">Audio is loading..... </div>
+           
+		<div data-role="content">
+           
+                   
+                
+            <div>
                 <button class="button dh" id="buttonPlayAudio">Play</button>
-                <div class="separator"></div>
 			    <button class="button dh" id="buttonPauseAudio">Pause</button>
-                <div class="separator"></div>
 			    <button class="button dh" id="buttonStopAudio">Stop</button>
-                <div class="separator"></div>
-            </div>
-                <div class="separator"></div>
-			<div class="result-area ch50">
-                <div class="results">
-                    <div class="separator"></div>
-                    <div id="result" class="desc"></div>
-                </div>
             </div>
 			<div class="separator"></div>
+               
 		</div>
-				
-      
-   </div>
+		
+		</div>
+
 		
 
 <script>

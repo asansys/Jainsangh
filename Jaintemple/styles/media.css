@@ -128,7 +128,7 @@ body
 
 .content > .result-area > .results  > .desc {
     font-size:12px;
-    color:#a7a9ad;
+    color:white;
     margin-top:20px;
     text-align:center;
 }
@@ -182,7 +182,7 @@ body
 }
 .footer:before
 {
-	content: url(img/logo.png);
+	
 	position: relative;
 	left: 12px;
     top:2px;
@@ -247,7 +247,7 @@ body
 }
 
 	/*specific*/
-.content > .result-area > .results  > .desc {
+.content >  .desc {
     font-size:16px;
     color:#639ecd;
     word-wrap:break-word;
