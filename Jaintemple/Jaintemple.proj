@@ -23,11 +23,11 @@
     <Author>Anand Sancheti</Author>
     <Description>Jaintemple</Description>
     <WP8Requirements />
-    <WP8Capabilities />
-    <WP8TileTitle />
+    <WP8Capabilities>ID_CAP_LOCATION</WP8Capabilities>
+    <WP8TileTitle>Jain Sangh</WP8TileTitle>
     <WP8ProductID>{c01056bd-0b45-4f53-a7cb-77d0c861a95f}</WP8ProductID>
     <WP8PublisherID>{7a0ab62f-5f3a-428f-bd8c-bfcd90bd3bac}</WP8PublisherID>
-    <WP8Publisher />
+    <WP8Publisher>Anand Sancheti</WP8Publisher>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Telerik\ICE\Tools\Mobile\MobileTools.targets" />
 </Project>
