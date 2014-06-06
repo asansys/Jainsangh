@@ -84,6 +84,7 @@ var mediaPlayer;
 
 function onDeviceReady() {
     navigator.splashscreen.hide();
+    
 	mediaPlayer = new MediaPlayer();
 	mediaPlayer.run();
 }
@@ -97,9 +98,10 @@ MediaPlayer.prototype = {
     
 	run: function() {
 		var that = this,
-          //  src = "http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3";
-
+           
         src= window.location.search.substring(1).split('=')[1];
+        src = "http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3";
+
 		var playAudioButton = document.getElementById("buttonPlayAudio"),
     		stopAudioButton = document.getElementById("buttonStopAudio"),
     		pauseAudioButton = document.getElementById("buttonPauseAudio");
@@ -118,7 +120,7 @@ MediaPlayer.prototype = {
 										  function() {
 											  that._pause.apply(that, arguments)
 										  });
-        
+        //console.write(src);
 		that.mediaContent = new Media(src, 
 									  function() {
 										  that._onMediaSuccess.apply(that, arguments);
