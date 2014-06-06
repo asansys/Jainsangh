@@ -1,14 +1,20 @@
 <div data-role="view" id="pooja1" data-layout="jitterz-default" data-title="Pooja Schedule" data-reload="true"  >
         
           
-		<div data-role="content"><div id="schedule" class="desc"></div>
+		<div  data-role="content" >
+          <div id="schedule" >
+            
+            
+        </div>  
+            
+        </div>
           
                   
                 
-            </div></div>
+            </div>
 
         
-		<!-- Home page template -->
+	
 		
 <script>
    //var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "jitterz-default" });
@@ -19,7 +25,7 @@
        
     var API_KEY = "i5W92xXH0ehHG45fi6jJtCkNszdgKXRJ6Q8kNXRHmcc77i9iOd";
 
-    var tumblrAPI = "http://api.tumblr.com/v2/blog/anandsan.tumblr.com/posts/text?api_key=" + API_KEY + "&callback=?";
+    var tumblrAPI = "http://api.tumblr.com/v2/blog/jainsanghpooja.tumblr.com/posts/text?api_key=" + API_KEY + "&callback=?";
 
     $.getJSON(tumblrAPI).done(function (data) {
        
